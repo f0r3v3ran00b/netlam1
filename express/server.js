@@ -4,28 +4,21 @@ const express = require('express');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
-
 var vicesRouter = require('../routes/vices');
-
 const router = express.Router();
-/* router.get('/', (req, res) => {
-  res.writeHead(200, {
-    'Content-Type': 'text/html'
-  });
-  res.write('<h1>Hello from Express.js!!!</h1>');
-  res.end();
-});
-router.get('/another', (req, res) => res.json({
-  route: req.originalUrl
-}));
-router.post('/', (req, res) => res.json({
-  postBody: req.body
-}));
- */
+let port = process.env.PORT || 3000;
+
 app.use(bodyParser.json());
 app.set('views', path.join(__dirname, 'views'));
+console.log(`path is ${path.join(__dirname, '..', 'views')}`)
 app.set('view engine', 'pug');
 app.use('/.netlify/functions/server', vicesRouter); // path must route to lambda
+
+
+// Start Server Now...
+app.listen(port, function () {
+  console.log(`Example app listening on port ${port}!`);
+});
 
 module.exports = app;
 module.exports.handler = serverless(app);

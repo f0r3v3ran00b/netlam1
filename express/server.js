@@ -4,7 +4,7 @@ const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
 
-var vicesRouter = require('./routes/vices');
+var vicesRouter = require('../routes/vices');
 
 const router = express.Router();
 router.get('/', (req, res) => {

@@ -9,9 +9,9 @@ const router = express.Router();
 let port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
-app.set('views', path.join(__dirname, 'views'));
-console.log(`path is ${path.join(__dirname, '..', 'views')}`)
-app.set('view engine', 'pug');
+//app.set('views', path.join(__dirname, 'views'));
+//console.log(`path is ${path.join(__dirname, '..', 'views')}`)
+//app.set('view engine', 'pug');
 app.use('/.netlify/functions/server', vicesRouter); // path must route to lambda
 
 
